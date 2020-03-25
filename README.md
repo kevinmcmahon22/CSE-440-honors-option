@@ -1,2 +1,3 @@
 # CSE 440 honors option
- Use Gurobi to optimize a graph problem
+
+Formulate a linear integer problem and solve using Gurobi optimizer (https://www.gurobi.com/products/gurobi-optimizer/)
