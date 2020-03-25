@@ -1,0 +1,9 @@
+city1 Fire Station
+city2
+city3
+city4
+city5
+city6 Fire Station
+city7
+city8
+city9

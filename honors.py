@@ -2,31 +2,18 @@
 # Kevin McMahon
 # 12/4/19
 
-
-# A city is reviewing the location of its fire stations. The city is made up of a number of neighborhoods.
-# A fire station can be placed in any neighborhood. It is able to handle the fires for both its
-# neighborhood and any adjacent neighborhood (any neighborhood with a non-zero border with its home neighborhood).
-
-# The objective is to minimize the number of fire stations used. We are asked to find a set of such subsets of 
-# neighborhoods that covers the set of all neighborhoods in the sense that every neighborhood appears in the service 
-# subset associated with at least one fire station. We want to formulate this problem as an integer linear program 
-# and solve it in python using the an underlying solver. We want to use Gurobi as the underlying solver.
-
-
-# cities.json represents cities and physical connections between them
-# python file takes json, creates gurobi model and optimizes it
-
 import json
 import networkx as nx
 import matplotlib.pyplot as plt
 from gurobipy import *
 
 # Get data for problem
-# Undirected graph, all edges are bidirectional 
 fp = open('./cities.json')
 cities = json.load(fp)
+out = open('./output.txt', 'w')
 
 try:
+    # Undirected graph, all edges are bidirectional 
     G = nx.Graph()
     city_to_var = {}
     m = Model("mip1")
@@ -57,14 +44,6 @@ try:
             city2_str = f"city{connected_city}"
             # add edges to graph
             G.add_edge(city1_str, city2_str)
-
-            # get the gurobi variable for each city in edge
-            # city1 = city_to_var[city1_str]
-            # city2 = city_to_var[city2_str]
-
-            # add constraint, each edge must have at least one city that contatins a station
-            # m.addConstr(city1 + city2 == 1, f"c{constraint_count}")
-            # constraint_count += 1
             
             # write constraints in a logical form rather than linear form 
             constraint_list.append(f"if {city1_str} then not {city2_str}")
@@ -81,19 +60,17 @@ try:
 
     m.optimize()
 
-    print()
     for var in m.getVars():
         name = var.getAttr("VarName")
         value = var.getAttr("x")
         if value == 1.0:
-            print(f"{name} Fire Station")
+            print(f"{name} Fire Station", file=out)
         else:
-            print(f"{name}")
-    print()
+            print(f"{name}", file=out)
 
-    # output graph for debugging purposes
     nx.draw(G, with_labels=True,font_weight='bold')
-    plt.show()
+    # plt.show()
+    plt.savefig('output')
 
 except GurobiError as e:
     print(f"Error code {str(e.errno)}: {str(e)}")
