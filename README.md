@@ -1,7 +1,6 @@
 # CSE 440 honors option
 
-Formulate a linear integer problem and solve using Gurobi optimizer 
-https://www.gurobi.com/products/gurobi-optimizer/
+Formulate a linear integer problem and solve using [Gurobi optimizer](https://www.gurobi.com/products/gurobi-optimizer/)
 
 ## Problem
 A city is reviewing the location of its fire stations. The city is made up of a number of neighborhoods.
@@ -14,10 +13,7 @@ subset associated with at least one fire station. We want to formulate this prob
 and solve it in python using the an underlying solver. We want to use Gurobi as the underlying solver.
 
 ## Files
-cities.json - represent cities and physical connections between them
-
-honors.py - script to solve problem using Gurobi
-
-output.txt - print results
-
-output.png - plot results showing connections between stations
+* cities.json - represent cities and physical connections between them
+* honors.py - script to solve problem using Gurobi
+* output.txt - print results
+* output.png - plot results showing connections between stations
