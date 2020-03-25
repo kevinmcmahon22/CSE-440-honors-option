@@ -13,6 +13,11 @@ neighborhoods that covers the set of all neighborhoods in the sense that every n
 subset associated with at least one fire station. We want to formulate this problem as an integer linear program 
 and solve it in python using the an underlying solver. We want to use Gurobi as the underlying solver.
 
+## Files
 cities.json - represent cities and physical connections between them
-honors.py - take in json and solve using Gurobi
-result.txt - print results
+
+honors.py - script to solve problem using Gurobi
+
+output.txt - print results
+
+output.png - plot results showing connections between stations
