@@ -1,6 +1,7 @@
-# CSE 440 honors option
+# Fire station placement
 
 Formulate a linear integer problem and solve using [Gurobi optimizer](https://www.gurobi.com/products/gurobi-optimizer/)
+Honors option for CSE 440: Artificial Intelligence
 
 ## Problem
 A city is reviewing the location of its fire stations. The city is made up of a number of neighborhoods.
