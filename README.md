@@ -1,6 +1,7 @@
 # Fire station placement
 
 Formulate a linear integer problem and solve using [Gurobi optimizer](https://www.gurobi.com/products/gurobi-optimizer/)
+
 Honors option for CSE 440: Artificial Intelligence
 
 ## Problem
